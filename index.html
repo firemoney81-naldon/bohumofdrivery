@@ -1,23 +1,487 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
+
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7; /* 가독성 향상 */
+            color: #444;
+            background: #f4f7f6; /* 부드러운 배경색 */
+        }
+        header, nav, section, footer {
+            padding: 25px 20px;
+            max-width: 1100px;
+            margin: auto;
+            background: #ffffff;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 그림자 강화 */
+        }
+        header {
+            background: linear-gradient(135deg, #1d4354, #3a7bd5); /* 다채로운 헤더 배경 */
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+            line-height: 1.3;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        nav {
+            background: #3a7bd5; /* 네비게이션 색상 */
+            text-align: center;
+            padding: 18px 0;
+            margin-bottom: 35px;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 18px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: color 0.3s, text-decoration 0.3s;
+        }
+        nav a:hover {
+            color: #ffe0b2;
+            text-decoration: underline;
+        }
+        h2 {
+            border-bottom: 3px solid #3a7bd5;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            color: #1d4354;
+            font-size: 1.8rem;
+        }
+        h3 {
+            color: #3a7bd5;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        .info_card, .review_card {
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            background: #fafafa;
+            transition: box-shadow 0.3s;
+        }
+        .info_card:hover, .review_card:hover {
+            box-shadow: 0 6px 15px rgba(58, 123, 213, 0.2);
+        }
+        .cta {
+            display: inline-block;
+            background-color: #ff9800; /* 강조 색상 */
+            color: white;
+            padding: 16px 38px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .cta:hover {
+            background-color: #fb8c00;
+        }
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1d4354;
+        }
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 4px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e3f2fd; /* 표 헤더 색상 */
+            color: #1d4354;
+            font-weight: 700;
+        }
+        .external-link {
+            color: #0d47a1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .external-link:hover {
+            text-decoration: underline;
+        }
+        .highlight {
+            color: #d32f2f;
+            font-weight: 700;
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context":"https://schema.org",
+        "@type":"Service",
+        "name":"운전자상해보험 비교 견적 서비스",
+        "description":"2026년 최신 운전자상해보험 상품을 비교하고 가입하세요. 교통사고처리지원금(합의금), 벌금, 변호사 선임비용, 상해 보장까지.",
+        "provider":{
+            "@type":"LocalBusiness",
+            "name":"운전자보험 전문가 그룹",
+            "telephone":"1544-7788",
+            "areaServed":"KR"
+        },
+        "offers":{
+            "@type":"OfferCatalog",
+            "name":"운전자상해보험 상품 목록",
+            "itemListElement":[
+                {"@type":"Offer","itemOffered":{"@type":"Service","name":"교통사고처리지원금 보장"}},
+                {"@type":"Offer","itemOffered":{"@type":"Service","name":"벌금 방어 비용 보장"}},
+                {"@type":"Offer","itemOffered":{"@type":"Service","name":"변호사 선임비용 보장"}},
+                {"@type":"Offer","itemOffered":{"@type":"Service","name":"자동차 부상 치료비 (자부상) 특약"}},
+                {"@type":"Offer","itemOffered":{"@type":"Service","name":"운전자 상해 사망/후유장해"}},
+                {"@type":"Offer","itemOffered":{"@type":"Service","name":"비갱신형 운전자보험 상품"}},
+                {"@type":"Offer","itemOffered":{"@type":"Service","name":"다이렉트 운전자보험 비교"}},
+                {"@type":"Offer","itemOffered":{"@type":"Service","name":"민식이법 대비 특약"}}
+            ]
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+            "@type": "Question",
+            "name": "운전자상해보험과 일반 운전자보험의 차이점은 무엇인가요?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "일반 운전자보험은 법률 비용(벌금, 합의금, 변호사 선임비용) 보장에 중점을 두는 반면, 운전자상해보험은 여기에 더해 운전 중 발생하는 상해에 대한 치료비, 입원일당, 후유장해 등 '운전자 자신'의 신체적 상해 보장을 강화한 상품입니다."
+            }
+        },{
+            "@type": "Question",
+            "name": "2026년 운전자상해보험 가입 시 가장 중요한 특약은 무엇인가요?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "가장 중요한 특약은 '교통사고처리지원금', '대인 벌금', '대물 벌금', '변호사 선임비용'이며, 여기에 '자동차 부상 치료비(자부상)'와 '상해 사망/후유장해' 특약으로 운전자 본인의 상해 보장을 강화하는 것이 핵심입니다."
+            }
+        },{
+            "@type": "Question",
+            "name": "운전자상해보험료를 절약하는 방법이 있나요?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "만기환급금이 없는 순수보장형을 선택하거나, 비갱신형 대신 갱신형을 고려하면 초기 보험료를 절약할 수 있습니다. 또한, 다이렉트 채널을 이용하거나 불필요한 특약을 제외하는 것도 좋은 방법입니다. 여러 회사의 '운전자상해보험 비교'는 필수입니다."
+            }
+        }]
+    }
+    </script>
+</head>
+<body>
+
+<header id="상단">
+    <h1>2026 운전자상해보험 비교 및 가격: 벌금, 합의금, 변호사 선임비용 완벽 가이드</h1>
+    <p>필수 보장내용 확인하고 <strong class="highlight">최저가 운전자상해보험료</strong>로 지금 바로 대비하세요. 전문가 무료 상담!</p>
+    <a href="#무료견적신청" class="cta">무료 견적 바로 신청하기</a>
+</header>
+
+<nav>
+    <a href="#핵심보장">핵심 보장 분석</a>
+    <a href="#비교표">상품 비교표</a>
+    <a href="#필수특약">필수 특약 가이드</a>
+    <a href="#정보센터">심층 정보 센터</a>
+    <a href="#무료견적신청">무료 견적 신청</a>
+</nav>
+
+<section id="핵심보장" aria-label="운전자상해보험 핵심 보장 분석">
+    <h2>운전자상해보험 핵심 보장 4가지 분석 (2026년 기준)</h2>
+    <p>운전자상해보험은 운전 중 예상치 못한 사고 발생 시 운전자 본인의 형사적, 행정적 책임 및 신체적 상해를 동시에 보장하는 필수 보험입니다. 2026년 최신 기준으로 가장 중요하게 확인해야 할 4대 핵심 보장을 안내합니다.</p>
+    <div class="info_card">
+        <h3>1. 교통사고처리지원금 (형사 합의금)</h3>
+        <p>피해자가 <strong class="highlight">중상해</strong>를 입거나 사망했을 경우, 운전자가 피해자와 합의하는 데 사용되는 형사 합의금을 보장합니다. 과거에는 정액 지급이었으나 최근에는 '실손 지급 방식'이 주를 이루며, 2억 원 또는 그 이상의 한도로 충분히 가입하는 것이 중요합니다. 특히 <strong class="highlight">12대 중과실 사고</strong>나 <strong class="highlight">스쿨존 사고(민식이법)</strong> 발생 시 그 중요성이 극대화됩니다.</p>
+    </div>
+    <div class="info_card">
+        <h3>2. 운전자 벌금 (대인/대물)</h3>
+        <p>자동차 사고로 타인에게 상해를 입히거나 재산상의 피해를 입혀 확정된 벌금형에 대해 보장합니다. 대인 벌금은 최대 3,000만 원 (스쿨존 사고 시 500만 원 추가), 대물 벌금은 최대 500만 원까지 보장됩니다. 벌금은 보험사가 먼저 지급한 후 환수하는 것이 아닌, 확정 판결 후 지급되는 특성이 있습니다. 벌금 특약은 '운전자상해보험 필수' 항목입니다.</p>
+    </div>
+    <div class="info_card">
+        <h3>3. 변호사 선임비용</h3>
+        <p>구속되거나 공소 제기된 경우 (불구속 기소 포함), 수사 단계에서 경찰 조사 대응 시 발생하는 변호사 선임비용을 보장합니다. 최근에는 경찰 조사 단계부터 보장하는 특약이 중요해지고 있으며, 보장 한도는 5,000만 원에서 최대 1억 원까지 설정 가능합니다. <strong class="highlight">운전자상해보험 가입</strong>을 통해 법률 전문가의 조력을 초기에 받는 것이 중요합니다.</p>
+    </div>
+    <div class="info_card">
+        <h3>4. 자동차 부상 치료비 (자부상) 및 상해 보장</h3>
+        <p>운전자상해보험의 핵심적인 '상해' 보장 부분입니다. 자동차 사고로 인해 운전자 본인이 입은 상해에 대한 치료비를 등급에 따라 정액으로 지급합니다. 상대방 과실 여부와 관계없이 보장받을 수 있으며, 운전자 자신과 동승자까지 보장 가능합니다. 상해 사망/후유장해, 골절 진단비, 깁스 치료비 등 다양한 <strong class="highlight">운전자보험 특약</strong>으로 신체 보장을 강화할 수 있습니다.</p>
+    </div>
+</section>
+
+
+<section id="비교표" aria-label="운전자상해보험 상품 비교표">
+    <h2>2026 운전자상해보험 주요 회사별 비교</h2>
+    <p>운전자상해보험은 보험사별로 보장 내용, 보험료, 그리고 특약 구성에 차이가 있습니다. 2026년 주요 상품들의 핵심적인 내용을 비교하여 합리적인 선택을 돕습니다.</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>구분</th>
+                <th>A사 다이렉트</th>
+                <th>B사 일반형</th>
+                <th>C사 비갱신형</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>교통사고처리지원금</td>
+                <td>최대 2억 5천만원</td>
+                <td>최대 2억 원</td>
+                <td>최대 3억 원 (실손)</td>
+            </tr>
+            <tr>
+                <td>벌금 (대인)</td>
+                <td>3,000만원</td>
+                <td>3,000만원</td>
+                <td>3,000만원</td>
+            </tr>
+            <tr>
+                <td>변호사 선임비용</td>
+                <td>5,000만원 (경찰조사 포함)</td>
+                <td>4,500만원 (구속/공소 시)</td>
+                <td>5,000만원 (경찰조사 포함)</td>
+            </tr>
+            <tr>
+                <td>자동차 부상 치료비 (자부상)</td>
+                <td>14급 기준 30만원</td>
+                <td>14급 기준 50만원</td>
+                <td>14급 기준 20만원</td>
+            </tr>
+            <tr>
+                <td>상해 사망/후유장해</td>
+                <td>1억 원</td>
+                <td>5천만 원</td>
+                <td>1억 5천만 원</td>
+            </tr>
+            <tr>
+                <td>갱신 유형</td>
+                <td>갱신형 (20년 만기)</td>
+                <td>갱신형 (10년 만기)</td>
+                <td><strong class="highlight">비갱신형</strong> (100세 만기)</td>
+            </tr>
+            <tr>
+                <td>월 예상 보험료 (40세 남성 기준)</td>
+                <td>1만 2천 원대</td>
+                <td>1만 5천 원대</td>
+                <td>2만 8천 원대</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="highlight">※ 상기 보험료는 예시이며, 가입자의 연령, 운전 경력, 성별, 직업 등에 따라 달라질 수 있습니다. 정확한 '운전자상해보험료'는 무료 견적을 통해 확인하세요.</p>
+</section>
+
+<section id="필수특약" aria-label="운전자상해보험 필수 특약 가이드">
+    <h2>운전자상해보험 필수 특약 및 선택 기준</h2>
+    <p>운전자상해보험의 가치는 특약 구성에 달려 있습니다. 불필요한 보장을 줄이고 핵심적인 보장을 극대화하는 것이 <strong class="highlight">운전자보험 가성비</strong>를 높이는 길입니다. 다음은 2026년 반드시 고려해야 할 특약입니다.</p>
+
+    <h3>1. 법률 비용 보장 특약 (필수)</h3>
+    <ul>
+        <li><strong>교통사고처리지원금:</strong> 12대 중과실 사고 시 형사 합의금을 보장하는 핵심 특약. 실손 보상 한도와 지급 조건을 면밀히 검토해야 합니다.</li>
+        <li><strong>대인/대물 벌금:</strong> 음주운전, 무면허 운전 등 면책 사항을 제외한 사고로 인한 벌금 보장.</li>
+        <li><strong>변호사 선임비용:</strong> 경찰 조사 단계 보장 여부와 한도를 최우선으로 확인하세요.</li>
+    </ul>
+
+    <h3>2. 상해 보장 특약 (운전자상해보험 핵심)</h3>
+    <ul>
+        <li><strong>자동차 부상 치료비 (자부상):</strong> 운전자상해보험의 가장 큰 장점 중 하나로, 운전자 본인의 부상을 과실과 무관하게 보장합니다. 1급부터 14급까지 보장 금액이 달라지므로, 14급 기준 금액을 높게 설정하는 것이 유리합니다.</li>
+        <li><strong>운전자 상해 사망/후유장해:</strong> 운전 중 발생한 사고로 인한 사망 또는 후유장해 시 정액 지급됩니다.</li>
+        <li><strong>골절 진단비 및 깁스 치료비:</strong> 작은 사고에도 발생하기 쉬운 부상에 대한 보장으로, 일상생활 상해까지 대비할 수 있습니다.</li>
+    </ul>
+
+    <h3>3. 기타 유용 특약</h3>
+    <ul>
+        <li><strong>자가용 운전 중 교통사고 입원일당:</strong> 입원 시 생활비 보조 역할.</li>
+        <li><strong>대중교통 이용 중 상해:</strong> 운전 외 일상생활에서의 대중교통 이용 시 발생하는 상해까지 보장하여 보장 범위를 넓혀줍니다.</li>
+    </ul>
+    
+    <div class="review_card">
+        <h4>전문가 조언: '비갱신 운전자보험' 선택 기준</h4>
+        <p>비갱신형 운전자상해보험은 초기 보험료는 높지만 만기 시까지 보험료 인상 없이 유지할 수 있어 장기적으로 총 납입 보험료가 더 저렴할 수 있습니다. 특히 30~40대의 젊은 운전자에게 유리하며, 보장 기간을 <strong class="highlight">100세 만기</strong>로 설정하여 평생 운전 위험에 대비할 수 있습니다.</p>
+    </div>
+</section>
+<section id="정보센터" aria-label="운전자상해보험 심층 정보 센터">
+    <h2>심층 정보 센터: 운전자보험의 법적 이해 및 필요성</h2>
+    <p>운전자상해보험은 단순히 운전자를 위한 상품을 넘어, 복잡해지는 교통법규와 강화되는 처벌 기준 속에서 운전자의 법적 리스크를 관리하는 '필수 방패' 역할을 합니다. 2026년 운전자에게 요구되는 법적 책임과 보험의 역할에 대해 심층적으로 알아보겠습니다.</p>
+    
+    <h3>1. 민식이법 (특정범죄 가중처벌 등에 관한 법률) 대비</h3>
+    <p>2020년 3월 시행된 '민식이법'은 스쿨존 내 교통사고 발생 시 운전자에 대한 처벌을 대폭 강화했습니다. 운전자상해보험 가입 시 이 법률에 따른 <strong class="highlight">스쿨존 사고 보장 특약</strong>의 보상 한도를 반드시 확인해야 합니다. 일반적인 교통사고처리지원금과는 별도로 스쿨존 사고 벌금 및 합의금 특약을 추가해야 안전합니다.</p>
+    
+    <h3>2. 12대 중과실과 운전자보험의 면책</h3>
+    <p>운전자보험은 신호 위반, 중앙선 침범, 속도 위반 등 12대 중과실 사고 발생 시에도 법률 비용을 보장합니다. 그러나 음주운전, 무면허 운전, 도주 사고(뺑소니)는 고의성이 인정되어 모든 보험사의 약관상 <strong class="highlight">면책 사항</strong>에 해당하며, 이 경우 보험금 지급이 불가능합니다. 이는 운전자보험의 가장 중요한 <strong class="highlight">운전자보험 가입 조건</strong>이자 약관입니다.</p>
+
+    <h3>3. 자동차 부상 치료비 (자부상)의 실질적 혜택</h3>
+    <p>많은 운전자가 자부상 특약을 간과하지만, 이는 경미한 접촉사고 시에도 큰 힘을 발휘합니다. 본인의 과실이 있더라도 자동차보험의 대인/대물 보장과 무관하게 보험금을 지급받을 수 있습니다. 경미한 염좌 진단(12~14급)만으로도 정액의 <strong class="highlight">운전자보험 보험금 청구</strong>가 가능하여, 병원 치료비 부담을 줄여줍니다.</p>
+
+    <h3>4. 신뢰성 있는 외부 자료 참고</h3>
+    <p>운전자상해보험과 관련된 법적, 제도적 내용은 수시로 변경될 수 있으므로 공인된 기관의 정보를 참고하는 것이 중요합니다.</p>
+    <ul>
+        <li><a href="https://www.law.go.kr/법령/특정범죄가중처벌등에관한법률" target="_blank" rel="nofollow" class="external-link">국가법령정보센터 - 특정범죄 가중처벌 등에 관한 법률 (민식이법 관련)</a></li>
+        <li><a href="https://www.fss.or.kr/" target="_blank" rel="nofollow" class="external-link">금융감독원 (보험 상품 정보 및 분쟁 조정)</a></li>
+        <li><a href="https://namu.wiki/w/운전자보험" target="_blank" rel="nofollow" class="external-link">나무위키 - 운전자보험 (심화 정보 참고)</a></li>
+        <li><a href="https://www.mohw.go.kr/" target="_blank" rel="nofollow" class="external-link">보건복지부 (교통사고 상해 등급 및 의료 관련 기준)</a></li>
+        <li><a href="https://www.kidi.or.kr/main/main.do" target="_blank" rel="nofollow" class="external-link">보험개발원 (자동차보험 및 운전자보험 통계 정보)</a></li>
+    </ul>
+
+    <h3>5. 운전자보험 가입 전 체크리스트 (2026년 필수)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>체크 항목</th>
+                <th>확인 내용</th>
+                <th>필수 여부</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>법률 비용 한도</td>
+                <td>교통사고처리지원금 최소 2억, 변호사 선임비용 경찰 조사 포함</td>
+                <td><strong class="highlight">필수</strong></td>
+            </tr>
+            <tr>
+                <td>갱신 vs 비갱신</td>
+                <td>장기 운전 계획에 따라 유리한 유형 선택 (갱신 주기도 확인)</td>
+                <td>선택</td>
+            </tr>
+            <tr>
+                <td>자동차 부상 치료비 (자부상)</td>
+                <td>14급 기준 보장 금액 최대화 (경미한 사고 대비)</td>
+                <td><strong class="highlight">필수</strong></td>
+            </tr>
+            <tr>
+                <td>사고 후 보장 (상해)</td>
+                <td>상해 사망, 후유장해, 입원일당의 보장 규모</td>
+                <td>필수</td>
+            </tr>
+            <tr>
+                <td>운전자보험 다이렉트 여부</td>
+                <td>다이렉트 상품이 일반 상품보다 <strong class="highlight">운전자보험료</strong>가 저렴한지 비교</td>
+                <td>선택</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 id="심층분석1">운전자상해보험과 자동차보험: 중복 보장과 역할 분담의 이해</h3>
+    <p>많은 운전자가 운전자보험과 자동차보험의 차이점을 혼동합니다. <strong class="highlight">자동차보험</strong>은 타인의 피해(대인, 대물)를 보상하는 데 중점을 둔 의무 보험인 반면, <strong class="highlight">운전자상해보험</strong>은 자동차보험으로 해결할 수 없는 '운전자 본인의 법적 책임(벌금, 합의금, 변호사 선임비용)'과 '운전자 본인의 상해'를 보장하는 선택 보험입니다. 특히 교통사고처리지원금은 피해자와의 형사 합의금으로, 이는 자동차보험에서 지급되는 보험금과 성격이 완전히 다릅니다. 따라서 자동차보험에 가입되어 있더라도 운전자상해보험은 <strong class="highlight">운전자보험 필수</strong> 상품으로 간주됩니다. 운전자상해보험의 '상해' 보장 특약은 자동차보험의 '자동차상해' 또는 '자기신체사고' 특약과 일부 중복될 수 있으나, 운전자상해보험은 대중교통 이용 중 상해까지 폭넓게 보장하는 장점이 있어 보장의 공백을 메워줍니다. 2026년에는 이 두 보험의 역할을 명확히 이해하고 보장의 사각지대가 없도록 설계하는 것이 현명합니다.</p>
+
+    <h3 id="심층분석2">운전자보험료 결정 요인과 절약 팁</h3>
+    <p>운전자상해보험의 <strong class="highlight">운전자상해보험 가격</strong>은 여러 요인에 의해 결정됩니다. 주요 요인으로는 가입 연령, 성별, 운전 경력, 직업 급수, 그리고 선택하는 특약의 한도와 범위입니다. 특히 직업 급수는 보험료에 큰 영향을 미치는데, 사무직(1급)이 위험도가 높은 직업(2, 3급)보다 보험료가 저렴합니다. 보험료를 절약하는 가장 좋은 방법은 다음과 같습니다.</p>
+    <ul>
+        <li><strong>순수보장형 선택:</strong> 만기 환급금이 없는 순수보장형을 선택하면 만기환급형보다 저렴하게 가입할 수 있습니다.</li>
+        <li><strong>다이렉트 채널 이용:</strong> 설계사 수수료가 없어 일반 상품 대비 10%~20% 저렴한 <strong class="highlight">운전자보험 다이렉트</strong> 상품을 비교하는 것이 좋습니다.</li>
+        <li><strong>비갱신형 vs 갱신형 신중 선택:</strong> 장기적으로 운전을 할 계획이라면 <strong class="highlight">비갱신 운전자보험</strong>이 총 납입액은 저렴할 수 있습니다.</li>
+        <li><strong>불필요한 특약 제거:</strong> 이미 다른 보험에서 보장받고 있는 항목(예: 입원일당)은 과감하게 제외하고 법률 비용과 자부상 등 핵심 특약에 집중합니다.</li>
+    </ul>
+
+    <h3 id="심층분석3">교통사고 발생 시 운전자상해보험 활용 절차</h3>
+    <p>사고 발생 시 운전자가 당황하지 않고 보험을 효과적으로 활용하는 절차가 중요합니다.</p>
+    <ol>
+        <li><strong>사고 접수 및 경찰 신고:</strong> 11대 중과실 등 중대 사고 발생 시 반드시 경찰에 신고해야 형사 책임 관련 보장을 받을 수 있습니다.</li>
+        <li><strong>보험사 연락:</strong> 즉시 가입된 운전자상해보험사에 연락하여 사고 내용을 알리고, 교통사고처리지원금 및 변호사 선임비용 관련 안내를 받습니다.</li>
+        <li><strong>변호사 선임:</strong> 구속되거나 공소 제기된 경우, 혹은 경찰 조사 단계부터 변호사 선임비용 특약을 활용하여 변호사를 선임합니다. 이 때 보험사에서 추천하는 변호사 외에 본인이 원하는 변호사를 선임할 수 있습니다.</li>
+        <li><strong>형사 합의 및 보험금 청구:</strong> 변호사의 조력을 받아 피해자와 합의를 진행하고, 합의금을 지급한 후 보험사에 <strong class="highlight">교통사고처리지원금</strong>을 청구합니다. 벌금은 법원 판결 확정 후, 변호사 선임비용은 실제 지출 후 청구합니다.</li>
+        <li><strong>상해 치료비 청구:</strong> 운전자 본인의 치료가 필요할 경우, 진단서 및 치료 내역을 첨부하여 <strong class="highlight">자동차 부상 치료비 (자부상)</strong> 및 기타 상해 특약 보험금을 청구합니다.</li>
+    </ol>
+
+    <p>운전자상해보험은 사고 발생 순간 운전자를 가장 빠르게 돕는 '금융 안전망'입니다. 운전자보험에 대한 충분한 이해는 불필요한 비용 지출을 막고, 사고 위험으로부터 자신을 보호하는 첫걸음입니다. 2026년 운전자보험 시장은 더욱 세분화되고 특약이 다양해지고 있으므로, 여러 상품을 꼼꼼하게 <strong class="highlight">운전자보험비교견적</strong>하는 과정이 필수적입니다.</p>
+
+    <p>최근에는 <strong class="highlight">자동차 상해 보험</strong>과 <strong class="highlight">운전자보험 보장내용</strong>을 통합적으로 비교하여 가입하는 추세입니다. 특히 <strong class="highlight">운전자보험 순위</strong>나 <strong class="highlight">운전자보험 추천</strong> 정보를 맹신하기보다는, 본인의 운전 습관과 가족 구성원(가족 <strong class="highlight">운전자보험</strong> 가입 여부)에 맞는 <strong class="highlight">운전자보험 설계</strong>가 중요합니다. 다이렉트 상품의 경우, 간편하지만 <strong class="highlight">운전자보험 약관</strong>을 스스로 꼼꼼히 확인해야 하는 책임이 따릅니다. 따라서 운전자상해보험 가입 전 반드시 전문가와 충분한 상담을 통해 <strong class="highlight">운전자보험 핵심</strong> 보장을 놓치지 않도록 해야 합니다. <strong class="highlight">비갱신 운전자보험</strong>의 인기가 높은 이유는 미래의 보험료 인상 리스크를 제거할 수 있기 때문이며, <strong class="highlight">만기환급형 운전자보험</strong>은 환급금 때문에 보험료가 높지만 일정 시점 후 보험료를 돌려받을 수 있다는 장점이 있습니다. 이 외에도 <strong class="highlight">상해 등급</strong>에 따른 보장 금액, <strong class="highlight">고지의무</strong> 위반 시 면책 사항 등 다양한 <strong class="highlight">운전자보험 팁</strong>을 숙지해야 합니다. 운전자상해보험을 통해 안전한 2026년 운전 생활을 준비하시기 바랍니다. <strong class="highlight">운전자보험 선택 기준</strong>은 명확해야 합니다. </p>
+    </section>
+
+<section id="무료견적신청" aria-label="무료 견적 신청">
+    <h2>운전자상해보험 무료 견적 신청 및 비교</h2>
+    <p>지금 바로 정보를 입력하시면, <strong class="highlight">10개 이상 보험사의 운전자상해보험 상품</strong>을 비교하여 가장 저렴하고 보장이 좋은 최적의 견적을 안내해 드립니다. 개인 정보 보호는 철저히 지켜집니다.</p>
+    <form action="/submit-estimate" method="POST" aria-describedby="견적폼설명">
+        <p id="견적폼설명">아래 정보를 정확히 입력해 주시면 전문 컨설턴트가 빠르게 연락드립니다.</p>
+
+        <label for="보험유형">희망 보험 유형</label>
+        <select id="보험유형" name="type" required>
+            <option value="">선택하세요</option>
+            <option value="비갱신 운전자상해보험">비갱신 운전자상해보험</option>
+            <option value="갱신형 운전자상해보험">갱신형 운전자상해보험</option>
+            <option value="다이렉트 운전자보험">다이렉트 운전자보험 (최저가 비교)</option>
+            <option value="자부상 강화 운전자보험">자부상 강화 운전자보험</option>
+            <option value="법률비용 강화 운전자보험">법률비용 강화 운전자보험</option>
+        </select>
+
+        <label for="나이">가입 대상자 나이</label>
+        <input type="number" id="나이" name="age" placeholder="예: 40" min="19" max="65" required />
+
+        <label for="직업">직업 급수 (보험료 산출의 중요 요소)</label>
+        <select id="직업" name="job_class" required>
+            <option value="">선택하세요</option>
+            <option value="사무직 (1급)">사무직 (1급)</option>
+            <option value="기술직/현장직 (2급)">기술직/현장직 (2급)</option>
+            <option value="위험직 (3급)">위험직 (3급)</option>
+        </select>
+        
+        <label for="연락처">연락처</label>
+        <input type="tel" id="연락처" name="phone" placeholder="010-XXXX-XXXX" pattern="[0-9]{3}-?[0-9]{3,4}-?[0-9]{4}" required />
+
+        <label for="상담시간">희망 상담 시간대</label>
+        <select id="상담시간" name="time">
+            <option value="오전">오전 (9시~12시)</option>
+            <option value="오후">오후 (12시~18시)</option>
+            <option value="저녁">저녁 (18시~20시)</option>
+            <option value="상관없음">상관 없음</option>
+        </select>
+
+        <label for="요청사항">추가 요청 사항</label>
+        <textarea id="요청사항" name="request" rows="4" placeholder="예: 자동차보험과 함께 비교하고 싶어요, 기존 운전자보험을 해지하고 싶어요 등"></textarea>
+
+        <button type="submit" class="cta">운전자상해보험 견적 요청하기</button>
+    </form>
+</section>
+
+<section id="자주묻는질문" aria-label="자주 묻는 질문 FAQ">
+    <h2>자주 묻는 질문 (FAQ)</h2>
+    <dl class="faq">
+        <dt>운전자상해보험과 일반 운전자보험의 차이점은 무엇인가요?</dt>
+        <dd>일반 운전자보험은 법률 비용(벌금, 합의금, 변호사 선임비용) 보장에 중점을 두는 반면, 운전자상해보험은 여기에 더해 운전 중 발생하는 상해에 대한 치료비, 입원일당, 후유장해 등 '운전자 자신'의 신체적 상해 보장을 강화한 상품입니다.</dd>
+
+        <dt>운전자보험의 필수 보장 3가지(벌금, 합의금, 변호사 선임비용)는 꼭 최대 한도로 해야 하나요?</dt>
+        <dd>네, 벌금은 3천만 원, 교통사고처리지원금은 최소 2억 원, 변호사 선임비용은 5천만 원 이상 (경찰 조사 포함)으로 설정하는 것이 2026년 기준 가장 안전합니다. 법률 비용은 예기치 못한 사고 시 가정 경제를 파탄낼 수 있는 가장 큰 리스크이기 때문입니다.</dd>
+
+        <dt>자동차 부상 치료비 (자부상) 특약은 무엇이며 왜 중요한가요?</dt>
+        <dd>자부상 특약은 운전 중 발생한 사고로 운전자 본인이 다쳤을 때 과실 비율과 무관하게 상해 등급별로 정액 보험금을 지급합니다. 특히 경미한 접촉사고로 인한 염좌 등 12~14급 부상 시 유용하게 사용할 수 있어 <strong class="highlight">운전자상해보험 필수 특약</strong>으로 권장됩니다.</dd>
+
+        <dt>비갱신형 운전자보험이 더 좋다고 하는데 사실인가요?</dt>
+        <dd>장기간 운전을 지속할 계획이라면 비갱신형이 유리합니다. 갱신 시 보험료 인상 걱정 없이 처음 보험료 그대로 100세까지 유지할 수 있어, 총 납입 보험료 측면에서 경제적일 수 있습니다. 다만, 초기 보험료는 갱신형보다 높습니다.</dd>
+    </dl>
+</section>
+
+<section id="문의하기" aria-label="문의하기">
+    <h2>운전자보험 전문가 상담</h2>
+    <p>궁금한 점이 있으시거나 복잡한 <strong class="highlight">운전자보험 비교견적</strong>이 필요하시면 언제든지 문의해 주세요.</p>
+    <p><strong>대표 전화: 1544-7788</strong> | 이메일: info@insu-expert.kr</p>
+    <p>상담 시간: 월~금 09:00~19:00 (토요일은 예약 상담만 가능)</p>
+</section>
+
+<footer>
+    <p style="text-align:center; color:#777; font-size:0.9rem;">&copy; 2026 운전자상해보험 전문가 비교 센터 | 개인정보 보호정책 | 사업자등록번호 123-45-67890</p>
+    <p style="text-align:center; color:#777; font-size:0.8rem; margin-top:5px;">본 정보는 보험 상품에 대한 이해를 돕기 위한 것이며, 실제 상품은 개별 약관 및 보장 조건에 따라 다를 수 있습니다. 최종 가입은 반드시 약관을 확인하시기 바랍니다.</p>
+</footer>
+
+</body>
 </html>
